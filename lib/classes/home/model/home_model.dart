@@ -6,16 +6,16 @@ class HomeItem {
   HomeItem({this.level = 0, this.id, this.x, this.y});
 
   int level;
-  String id;
-  int x;
-  int y;
+  String? id;
+  int? x;
+  int? y;
 }
 
 class HomeCoreModel {
   factory HomeCoreModel() => _getInstance();
 
   static HomeCoreModel get instance => _getInstance();
-  static HomeCoreModel _instance;
+  static HomeCoreModel? _instance;
 
   HomeCoreModel._internal() {
     // 初始化
@@ -25,7 +25,7 @@ class HomeCoreModel {
     if (_instance == null) {
       _instance = new HomeCoreModel._internal();
     }
-    return _instance;
+    return _instance!;
   }
 
   StreamController streamController = new StreamController.broadcast();

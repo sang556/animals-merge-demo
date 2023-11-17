@@ -1,13 +1,13 @@
 class Animals {
-  int id;
-  String name;
-  String coins;
-  int level;
-  String produce;
+  late int id;
+  late String name;
+  late String coins;
+  late int level;
+  late String produce;
 
   // int shopNum;
 
-  Animals({this.id, this.name, this.coins, this.level, this.produce});
+  Animals({required this.id, required this.name, required this.coins, required this.level, required this.produce});
 
   Animals.fromJson(Map<String, dynamic> json) {
     // print(json['id']);

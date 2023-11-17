@@ -9,7 +9,7 @@ import 'item_drag_view.dart';
 
 
 class HomeColumnView extends StatefulWidget {
-  HomeColumnView({Key key}) : super(key: key);
+  HomeColumnView({Key? key}) : super(key: key);
 
   @override
   _HomeColumnViewState createState() => _HomeColumnViewState();

@@ -4,9 +4,9 @@ import 'package:animalmerge/service/screen_service.dart';
 import 'package:flutter/material.dart';
 final double sizeW = (ScreenService.width - 15 * 2 - 3 * 10) / 4;
 class ItemView extends StatelessWidget {
-  ItemView({Key key, this.data, this.isDrag = false}) : super(key: key);
+  ItemView({Key? key, this.data, this.isDrag = false}) : super(key: key);
   bool isDrag;
-  HomeItem data;
+  HomeItem? data;
 
   @override
   Widget build(BuildContext context) {
@@ -17,10 +17,10 @@ class ItemView extends StatelessWidget {
         children: <Widget>[
           Align(
             alignment: Alignment.center,
-            child: data.level == 0
+            child: data?.level == 0
                 ? Text("")
                 : Image.asset(
-              'assets/dogs/ic_dog_level${data.level}.png',
+              'assets/dogs/ic_dog_level${data?.level}.png',
               width: sizeW,
               height: sizeW,
             ),
@@ -28,7 +28,7 @@ class ItemView extends StatelessWidget {
           Align(
               alignment: Alignment.bottomRight,
               child: Offstage(
-                offstage: isDrag || data.level == 0,
+                offstage: isDrag || data?.level == 0,
                 child: Container(
                     alignment: Alignment.center,
                     width: 16,
@@ -38,7 +38,7 @@ class ItemView extends StatelessWidget {
                         borderRadius:
                         BorderRadius.all(const Radius.circular(15))),
                     child: Text(
-                      '${data.level}',
+                      '${data?.level}',
                       style: TextStyle(color: Colors.white, fontSize: 12),
                     )),
               ))
@@ -52,9 +52,9 @@ class ItemView extends StatelessWidget {
 }
 
 class ItemDraggableTarget<HomeItem> extends StatefulWidget {
-  HomeItem data;
+  HomeItem? data;
 
-  ItemDraggableTarget({@required this.data, Key key}) : super(key: key);
+  ItemDraggableTarget({@required this.data, Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _ItemDraggableTargetState(text: data);
@@ -73,7 +73,7 @@ class _ItemDraggableTargetState extends State<ItemDraggableTarget> {
           return data != null;
         },
         onAccept: (data) {
-          HomeCoreModel.moveItem(widget.data, data);
+          HomeCoreModel.moveItem(widget.data, data as HomeItem);
         },
         onLeave: (data) {
           // print("data = $data onLeave --- 0");
@@ -93,7 +93,7 @@ class _ItemDraggableTargetState extends State<ItemDraggableTarget> {
               return data != null;
             },
             onAccept: (data) {
-              HomeCoreModel.moveItem(widget.data, data);
+              HomeCoreModel.moveItem(widget.data, data as HomeItem);
             },
             onLeave: (data) {
               // print("data = $data onLeave ----- 1");
